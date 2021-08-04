@@ -24,11 +24,18 @@ export class UserService {
   }
 
 
-  //TODO: add a function that will allow users to set their calorie and minute goals. The function will comuunicate with the back-end.
+  // TODO: add a function that will allow users to set their calorie and minute goals. The function will comuunicate with the back-end.
+  setgoals(user: User) {
+    return this.http.post('http://localhost:3030/user/setGoals', user);
+  }
 
 
-  //TODO: add a function that will allow users to get calorie and minute goals for a specific user (this means, given a username, this function should fetch calories and minute goals for that user). The function will comuunicate with the back-end.
-
+  // TODO: add a function that will allow users to get calorie and minute goals for a specific user
+  // (this means, given a username, this function should fetch calories and minute goals for that user).
+  // The function will comuunicate with the back-end.
+  getgoals() {
+    // return this.http.get();
+  }
 
 
 
