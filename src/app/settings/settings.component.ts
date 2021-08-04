@@ -19,8 +19,9 @@ export class SettingsComponent implements OnInit {
     this.currentUser = this.authService.currentUserValue;
     console.log('setting executed');
     this.caloriegoal = 2500; this.minutegoal = 100;
-    console.log(this.currentUser.username);
+    console.log(this.currentUser.minutegoal);
     this.currentUser.caloriegoal = this.caloriegoal; this.currentUser.minutegoal = this.minutegoal;
+    console.log(this.currentUser.minutegoal);
     this.userService.setgoals(this.currentUser);
   }
 
