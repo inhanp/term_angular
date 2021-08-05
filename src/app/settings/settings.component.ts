@@ -31,6 +31,9 @@ export class SettingsComponent implements OnInit {
     }
     return minute;
   }
-  submit() {}
+  submit() {this.userService.getgoals().pipe().subscribe(result => {
+    this.calorie = result.goals.caloriegoal;
+    this.minute = result.goals.minutegoal;
+  }); }
 
 }
