@@ -26,9 +26,9 @@ export class UserService {
 
 
   // TODO: add a function that will allow users to set their calorie and minute goals. The function will comuunicate with the back-end.
-  setgoals(user: User) {
+  setgoals({calories, minutes}) {
     console.log('service executed');
-    return this.http.post<any>('http://localhost:3030/user/setgoals', user);
+    return this.http.post('http://localhost:3030/user/setgoals', {calories, minutes});
   }
 
 
@@ -36,7 +36,7 @@ export class UserService {
   // (this means, given a username, this function should fetch calories and minute goals for that user).
   // The function will comuunicate with the back-end.
   getgoals() {
-    // return this.http.get();
+    return this.http.get<{goals: {caloriegoal: number, minutegoal: number}}>('http://localhost:3030/user/getgoals/${username}');
   }
 
 

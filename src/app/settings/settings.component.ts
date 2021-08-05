@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {User} from '../_models/user';
 import {UserService} from '../_services/user.service';
-import {AuthService} from '../_services/auth.service';
 
 @Component({
   selector: 'app-settings',
@@ -9,20 +8,29 @@ import {AuthService} from '../_services/auth.service';
   styleUrls: ['./settings.component.css']
 })
 export class SettingsComponent implements OnInit {
-  currentUser: User;
   caloriegoal: number;
   minutegoal: number;
-  constructor(private userService: UserService,
-              private authService: AuthService) {}
-
+  calorie = 2000;
+  minute = 165;
+  public ctrlValue: number;
+  constructor(private userService: UserService) {}
   ngOnInit() {
-    this.currentUser = this.authService.currentUserValue;
     console.log('setting executed');
     this.caloriegoal = 2500; this.minutegoal = 100;
-    console.log(this.currentUser.minutegoal);
-    this.currentUser.caloriegoal = this.caloriegoal; this.currentUser.minutegoal = this.minutegoal;
-    console.log(this.currentUser.minutegoal);
-    this.userService.setgoals(this.currentUser);
+    this.userService.setgoals({calories: this.caloriegoal, minutes: this.minutegoal});
   }
+  calorieLabel(calorie: number) {
+    if (this.calorie !== calorie) {
+      this.calorie = calorie;
+    }
+    return calorie;
+  }
+  minuteLabel(minute: number) {
+    if (this.minute !== minute) {
+      this.minute = minute;
+    }
+    return minute;
+  }
+  submit() {}
 
 }
