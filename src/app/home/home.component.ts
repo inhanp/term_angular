@@ -45,7 +45,7 @@ export class HomeComponent implements OnInit {
   createPARecord() {
     this.parecordservice.add().pipe(first()).subscribe(
       resp => {
-        this.notifService.showNotif(resp, 'response');
+        this.notifService.showNotif('Recorded!', 'response');
         this.parecords = null;
         this.loadAllPArecords();
         }, error => {
@@ -56,8 +56,11 @@ export class HomeComponent implements OnInit {
 
 
     // this.userService.deleteActivity(date);
-    this.parecordservice.delete(date).pipe(first()).subscribe( () => { this.parecords = null;
-                                                                       this.loadAllPArecords();
+    this.parecordservice.delete(date).pipe(first()).subscribe(
+      result => {
+        this.notifService.showNotif(`Deleted:${result}`, 'response');
+        this.parecords = null;
+        this.loadAllPArecords();
     });
   }
 

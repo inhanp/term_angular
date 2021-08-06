@@ -1,5 +1,5 @@
 .setting-card {
-  width: 700px;
+  width: 600px;
   height: 200px;
   display: block;
   margin-left:auto;
@@ -11,8 +11,8 @@
   text-align: center;
 }
 .input-card {
-  width: 700px;
-  height: 100px;
+  width: 600px;
+  height: 150px;
   display: block;
   margin-left:auto;
   margin-right:auto;
@@ -20,4 +20,8 @@
   align-items: center;
   justify-items: center;
   text-align: center;
+}
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+  opacity: 2;
 }

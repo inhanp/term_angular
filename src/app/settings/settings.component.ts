@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {AuthService} from '../_services/auth.service';
 import {UserService} from '../_services/user.service';
 import {first} from 'rxjs/operators';
-import {User} from '../_models/user';
+import {NotificationService} from '../_services/notification.service';
 
 @Component({
   selector: 'app-settings',
@@ -14,7 +14,8 @@ export class SettingsComponent implements OnInit {
   minute = 165;
   currentUser;
   constructor(private userService: UserService,
-              private authService: AuthService) {}
+              private authService: AuthService,
+              private notif: NotificationService) {}
   ngOnInit() {
     this.userService.getgoals(this.authService.currentUserValue.username).pipe(first()).subscribe(result => {
       this.calorie = result.goals.caloriegoal;
@@ -34,7 +35,9 @@ export class SettingsComponent implements OnInit {
     return minute;
   }
   submit() {
-    this.userService.setgoals({calories: this.calorie, minutes: this.minute}).pipe(first()).subscribe(result => {});
+    this.userService.setgoals({calories: this.calorie, minutes: this.minute}).pipe(first()).subscribe(result => {
+      this.notif.showNotif('Goals updated successfully!', 'confirmation');
+    });
   }
 
 }
