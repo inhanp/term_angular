@@ -10,7 +10,8 @@ import {Role} from './_models/role';
 
 // add the route to the 'settings' component.
 
-const routes: Routes = [{path: '', component: HomeComponent, canActivate: [AuthGuard]}, {path: 'login', component: LoginComponent},{ path: 'register', component: RegisterComponent },
+const routes: Routes = [{path: '', component: HomeComponent, canActivate: [AuthGuard]},
+  {path: 'login', component: LoginComponent}, { path: 'register', component: RegisterComponent },
   {path: 'admin', component: AdminComponent, canActivate: [AuthGuard], data: { roles: [Role.admin]}},
   {path: 'settings', component: SettingsComponent},
   { path: '**', redirectTo: '' }];

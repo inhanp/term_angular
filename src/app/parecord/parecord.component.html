@@ -1,6 +1,6 @@
 <!--TODO: add a tooltip that will show the username that created the parecord. Hint: https://stackblitz.com/angular/ygnjpyayagb?file=src%2Fapp%2Ftooltip-message-example.ts-->
 
-<mat-card class="parecord-card" >
+<mat-card class="parecord-card" [matTooltip]="username">
 
 
   <div class="date" >{{parecord.createdDate | date}}</div>

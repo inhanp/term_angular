@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {User} from '../_models/user';
+import {AuthService} from '../_services/auth.service';
 import {UserService} from '../_services/user.service';
+import {first} from 'rxjs/operators';
+import {User} from '../_models/user';
 
 @Component({
   selector: 'app-settings',
@@ -8,16 +10,16 @@ import {UserService} from '../_services/user.service';
   styleUrls: ['./settings.component.css']
 })
 export class SettingsComponent implements OnInit {
-  caloriegoal: number;
-  minutegoal: number;
   calorie = 2000;
   minute = 165;
-  public ctrlValue: number;
-  constructor(private userService: UserService) {}
+  currentUser;
+  constructor(private userService: UserService,
+              private authService: AuthService) {}
   ngOnInit() {
-    console.log('setting executed');
-    this.caloriegoal = 2500; this.minutegoal = 100;
-    this.userService.setgoals({calories: this.caloriegoal, minutes: this.minutegoal});
+    this.userService.getgoals(this.authService.currentUserValue.username).pipe(first()).subscribe(result => {
+      this.calorie = result.goals.caloriegoal;
+      this.minute = result.goals.minutegoal;
+    });
   }
   calorieLabel(calorie: number) {
     if (this.calorie !== calorie) {
@@ -31,9 +33,8 @@ export class SettingsComponent implements OnInit {
     }
     return minute;
   }
-  submit() {this.userService.getgoals().pipe().subscribe(result => {
-    this.calorie = result.goals.caloriegoal;
-    this.minute = result.goals.minutegoal;
-  }); }
+  submit() {
+    this.userService.setgoals({calories: this.calorie, minutes: this.minute}).pipe(first()).subscribe(result => {});
+  }
 
 }

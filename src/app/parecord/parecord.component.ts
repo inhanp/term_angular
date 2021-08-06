@@ -1,6 +1,8 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {PARecord} from '../_models/PARecord';
 import {NotificationService} from '../_services/notification.service';
+import {UserService} from '../_services/user.service';
+import {first} from 'rxjs/operators';
 
 
 @Component({
@@ -25,8 +27,10 @@ export class ParecordComponent implements OnInit {
    activity = this.activities[0];
    calprogressvalue = 0;
    minprogressvalue = 0;
+   username: string;
 
-  constructor(private notifService: NotificationService) { }
+  constructor(private notifService: NotificationService,
+              private userService: UserService) { }
 
   delete(date) {
     this.deleteEvent.emit(date);
@@ -39,8 +43,9 @@ export class ParecordComponent implements OnInit {
 
   ngOnInit() {
     this.activity = this.activities[this.parecord.activityType];
-
-    //TODO:  use userService to get the goal values corresponding the username that created the parecord and then use the obtained values to properly visualize the progress towards the goal.
+    console.log(this.parecord);
+    // TODO:  use userService to get the goal values corresponding the username that created the parecord
+    // and then use the obtained values to properly visualize the progress towards the goal.
 
 
   //
