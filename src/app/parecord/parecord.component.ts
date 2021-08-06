@@ -43,8 +43,14 @@ export class ParecordComponent implements OnInit {
 
   ngOnInit() {
     this.activity = this.activities[this.parecord.activityType];
-    console.log(this.parecord);
-    // TODO:  use userService to get the goal values corresponding the username that created the parecord
+    this.userService.getUser(this.parecord.createdBy).pipe(first()).subscribe(user => {
+      this.username = user;
+      this.userService.getgoals(this.username).pipe(first()).subscribe(result => {
+        this.calprogressvalue = Math.round(this.parecord.calories / result.goals.caloriegoal * 100);
+        this.minprogressvalue = Math.round(this.parecord.minutes / result.goals.minutegoal * 100);
+      });
+    });
+    // use userService to get the goal values corresponding the username that created the parecord
     // and then use the obtained values to properly visualize the progress towards the goal.
 
 

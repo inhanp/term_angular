@@ -16,6 +16,9 @@ export class UserService {
   getAll() {
      return this.http.get<User[]>(`http://localhost:3030/user/allusers`);
   }
+  getUser(userId) {
+    return this.http.get<string>(`http://localhost:3030/user/find/${userId}`);
+  }
 
 
 
