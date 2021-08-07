@@ -1,0 +1,23 @@
+.mat-card {
+  width: 600px;
+  height: 800px;
+  display: flex;
+  flex-direction: column;
+  margin-left:auto;
+  margin-right:auto;
+  margin-bottom: 20px;
+  vertical-align:middle;
+  align-items: flex-start;
+  justify-items: center;
+  text-align: center;
+}
+.mat-slider {
+  width: 500px;
+}
+.calorie-input {
+  width: 500px;
+}
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+  opacity: 2;
+}

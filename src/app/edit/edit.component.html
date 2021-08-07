@@ -1,3 +1,27 @@
 <mat-card>
-
+  <p>Add your exercise!</p>
+  <mat-form-field class="exercise-type" appearance="standard">
+    <mat-label>Select exercise type</mat-label>
+    <mat-select>
+      <mat-option value="one">Walk</mat-option>
+      <mat-option value="two">Run</mat-option>
+      <mat-option value="three">Bike</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field class="exercise-date" appearance="standard">
+    <mat-label>Choose the exercise date</mat-label>
+    <input matInput [matDatepicker]="picker">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+  <mat-form-field class="calorie-input" appearance="standard">
+    <mat-label>Calories burned</mat-label>
+    <input matInput type="number" min="1000" max="3000" step="250" >
+  </mat-form-field>
+  <mat-slider thumbLabel horizontal min="1000" max="3000" step="250" tickInterval="250"></mat-slider>
+  <mat-form-field class="minute-input" appearance="standard">
+    <mat-label>Minutes of exercise</mat-label>
+    <input matInput type="number" min="30" max="360" step="15" >
+  </mat-form-field>
+  <mat-slider thumbLabel horizontal min="30" max="360" step="15" tickInterval="15"></mat-slider>
 </mat-card>
