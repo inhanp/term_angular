@@ -10,7 +10,7 @@ import {Role} from './_models/role';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'HW3Angular';
+  title = 'HW5Angular';
   currentUser: User;
 
 

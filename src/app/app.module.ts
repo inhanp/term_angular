@@ -16,6 +16,7 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {JwtInterceptor} from './interceptors/jwt.interceptor';
 import {ErrorInterceptor} from './interceptors/error.interceptor';
 import { SettingsComponent } from './settings/settings.component';
+import { EditComponent } from './edit/edit.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { SettingsComponent } from './settings/settings.component';
     ParecordComponent,
     AdminComponent,
     RegisterComponent,
-    SettingsComponent
+    SettingsComponent,
+    EditComponent
   ],
   imports: [
     BrowserModule,
