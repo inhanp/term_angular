@@ -3,6 +3,7 @@ import { first } from 'rxjs/operators';
 
 import { User } from '../_models/user';
 import { UserService } from '../_services/user.service';
+import {RankComponent} from '../rank/rank.component';
 
 @Component({ templateUrl: 'admin.component.html' })
 export class AdminComponent implements OnInit {
