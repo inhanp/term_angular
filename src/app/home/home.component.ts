@@ -43,13 +43,13 @@ export class HomeComponent implements OnInit {
   }
 
   createPARecord() {
-    this.parecordservice.add().pipe(first()).subscribe(
-      resp => {
-        this.notifService.showNotif('Recorded!', 'response');
-        this.parecords = null;
-        this.loadAllPArecords();
-        }, error => {
-        this.notifService.showNotif(error); });
+    // this.parecordservice.add().pipe(first()).subscribe(
+    //   resp => {
+    //     this.notifService.showNotif('Recorded!', 'response');
+    //     this.parecords = null;
+    //     this.loadAllPArecords();
+    //     }, error => {
+    //     this.notifService.showNotif(error); });
   }
 
   deletePARecord(date) {

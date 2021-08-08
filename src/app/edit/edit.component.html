@@ -2,26 +2,29 @@
   <p>Add your exercise!</p>
   <mat-form-field class="exercise-type" appearance="standard">
     <mat-label>Select exercise type</mat-label>
-    <mat-select>
-      <mat-option value="one">Walk</mat-option>
-      <mat-option value="two">Run</mat-option>
-      <mat-option value="three">Bike</mat-option>
+    <mat-select [(value)]="exerciseType">
+      <mat-option value="0">Walk</mat-option>
+      <mat-option value="1">Run</mat-option>
+      <mat-option value="2">Bike</mat-option>
     </mat-select>
   </mat-form-field>
   <mat-form-field class="exercise-date" appearance="standard">
     <mat-label>Choose the exercise date</mat-label>
-    <input matInput [matDatepicker]="picker">
+    <input matInput (ngModelChange)="dateChange($event)" [(ngModel)]="date" [matDatepicker]="picker">
     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>
   </mat-form-field>
   <mat-form-field class="calorie-input" appearance="standard">
     <mat-label>Calories burned</mat-label>
-    <input matInput type="number" min="1000" max="3000" step="250" >
+    <input matInput (ngModelChange)="calorieChange($event)" [(ngModel)]="calories" type="number" min="1000" max="3000" step="250" >
   </mat-form-field>
-  <mat-slider thumbLabel horizontal min="1000" max="3000" step="250" tickInterval="250"></mat-slider>
+  <mat-slider [displayWith]="calorieChange" [(ngModel)]="calories" thumbLabel horizontal min="1000" max="3000" step="250" tickInterval="250"></mat-slider>
   <mat-form-field class="minute-input" appearance="standard">
     <mat-label>Minutes of exercise</mat-label>
-    <input matInput type="number" min="30" max="360" step="15" >
+    <input matInput (ngModelChange)="minuteChange($event)" [(ngModel)]="minutes" type="number" min="30" max="360" step="15" >
   </mat-form-field>
-  <mat-slider thumbLabel horizontal min="30" max="360" step="15" tickInterval="15"></mat-slider>
+  <mat-slider [displayWith]="minuteChange" [(ngModel)]="minutes" thumbLabel horizontal min="30" max="360" step="15" tickInterval="15"></mat-slider>
+  <mat-card-actions>
+    <button mat-button color="accent" (click)="submit()">Save</button>
+  </mat-card-actions>
 </mat-card>

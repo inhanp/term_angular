@@ -12,7 +12,6 @@ import {NotificationService} from '../_services/notification.service';
 export class SettingsComponent implements OnInit {
   calorie = 2000;
   minute = 165;
-  currentUser;
   constructor(private userService: UserService,
               private authService: AuthService,
               private notif: NotificationService) {}

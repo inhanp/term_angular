@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 
 import {AuthService} from './auth.service';
 import {PARecord} from '../_models/PARecord';
+import {conditionallyCreateMapObjectLiteral} from '@angular/compiler/src/render3/view/util';
 
 
 
@@ -20,17 +21,24 @@ export class PArecordService {
 
 
 
-  add() {
-    const randparecord = {
-          calories: Math.floor(Math.random() * 2500),
-          minutes: Math.floor(Math.random() * 180),
-          steps:  Math.floor(Math.random() * 25000),
-          activityType: Math.floor(Math.random() * 3)
-        };
+  // add() {
+  //   const randparecord = {
+  //         calories: Math.floor(Math.random() * 2500),
+  //         minutes: Math.floor(Math.random() * 180),
+  //         steps:  Math.floor(Math.random() * 25000),
+  //         activityType: Math.floor(Math.random() * 3)
+  //       };
+  //
+  //
+  //   return this.http.post(`http://localhost:3030/parecord/addparecord`, randparecord);
+  //
+  // }
 
-
-    return this.http.post(`http://localhost:3030/parecord/addparecord`, randparecord);
-
+  edit(type: number, date: Date, minutes: number, calories: number) {
+    console.log(minutes);
+    const parecord = {type, date, minutes, calories};
+    console.log(parecord);
+    return this.http.post(`http://localhost:3030/parecord/editparecord`, parecord);
   }
 
 
