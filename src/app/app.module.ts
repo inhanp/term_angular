@@ -17,6 +17,7 @@ import {JwtInterceptor} from './interceptors/jwt.interceptor';
 import {ErrorInterceptor} from './interceptors/error.interceptor';
 import { SettingsComponent } from './settings/settings.component';
 import { EditComponent } from './edit/edit.component';
+import { RankComponent } from './rank/rank.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { EditComponent } from './edit/edit.component';
     AdminComponent,
     RegisterComponent,
     SettingsComponent,
-    EditComponent
+    EditComponent,
+    RankComponent
   ],
   imports: [
     BrowserModule,

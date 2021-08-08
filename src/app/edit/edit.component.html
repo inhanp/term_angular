@@ -10,7 +10,7 @@
   </mat-form-field>
   <mat-form-field class="exercise-date" appearance="standard">
     <mat-label>Choose the exercise date</mat-label>
-    <input matInput (ngModelChange)="dateChange($event)" [(ngModel)]="date" [matDatepicker]="picker">
+    <input matInput [disabled]="dateDisabled" (ngModelChange)="dateChange($event)" [(ngModel)]="date" [matDatepicker]="picker">
     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>
   </mat-form-field>
