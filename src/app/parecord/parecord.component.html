@@ -38,7 +38,7 @@
     <mat-icon>more_vert</mat-icon>
   </button>
   <mat-menu #menu="matMenu">
-    <button mat-menu-item (click)="notImplemented('Edit activity')">
+    <button mat-menu-item [routerLink]="['/edit', {date: parecord.createdDate, minutes: parecord.minutes, calories: parecord.calories, type: parecord.activityType}]">
       <mat-icon>edit</mat-icon>
       <span>Edit</span>
     </button>
