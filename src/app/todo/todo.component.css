@@ -7,3 +7,7 @@
   justify-self: end;
   align-self: start;
 }
+.todo {display: grid;
+  max-width: 100%;
+  grid-template-columns: 15% 15% 34% 2% 34%;
+}
