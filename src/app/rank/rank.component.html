@@ -1,21 +1,22 @@
 <mat-card class="rank-card">
-  <div class="icon">icon</div>
-  <div class="name">name</div>
+  <div class="icon">
+  </div>
+  <div class="name">{{name}}</div>
   <div class="calories">
-    <div class="titlecal">Cal</div>
+    <div class="titlecal">{{avgcalories}}Cal</div>
     <section class="calories">
-      <mat-progress-bar class="example-margin">
+      <mat-progress-bar class="example-margin" [color]="accentColor" [value]="calrate">
       </mat-progress-bar>
     </section>
-    <div class="caloriesgoal">caloriegoal%</div>
+    <div class="caloriesgoal">{{calrate}}%</div>
   </div>
   <div></div>
   <div class="minutes">
-    <div class="titletime">Min</div>
+    <div class="titletime">{{avgminutes}}Min</div>
     <section class="time">
-      <mat-progress-bar class="example-margin">
+      <mat-progress-bar class="example-margin" [value]="minuterate">
       </mat-progress-bar>
     </section>
-    <div class="timegoal">timegoal%</div>
+    <div class="timegoal">{{minuterate}}%</div>
   </div>
 </mat-card>

@@ -18,6 +18,7 @@ import {ErrorInterceptor} from './interceptors/error.interceptor';
 import { SettingsComponent } from './settings/settings.component';
 import { EditComponent } from './edit/edit.component';
 import { RankComponent } from './rank/rank.component';
+import { TodoComponent } from './todo/todo.component';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { RankComponent } from './rank/rank.component';
     RegisterComponent,
     SettingsComponent,
     EditComponent,
-    RankComponent
+    RankComponent,
+    TodoComponent
   ],
   imports: [
     BrowserModule,

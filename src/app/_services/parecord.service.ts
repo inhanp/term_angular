@@ -46,7 +46,9 @@ export class PArecordService {
     return this.http.delete(`http://localhost:3030/parecord/${date}`);
 
   }
-
+  getAverage(username: string) {
+    return this.http.get<any>(`http://localhost:3030/parecord/getaverages/${username}`);
+  }
 
 
 }
