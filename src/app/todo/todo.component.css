@@ -1,0 +1,9 @@
+.date {
+  grid-area: date;
+}
+.menu{
+
+  grid-area: menu;
+  justify-self: end;
+  align-self: start;
+}

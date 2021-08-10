@@ -2,4 +2,19 @@
 <mat-card [matTooltip]="username">
   <div class="date">{{date}}</div>
   <div class="task">{{task}}</div>
+  <div class="menu">
+    <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Delete or edit">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item>
+        <mat-icon>edit</mat-icon>
+        <span>Edit</span>
+      </button>
+      <button mat-menu-item>
+        <mat-icon>delete</mat-icon>
+        <span>Delete</span>
+      </button>
+    </mat-menu>
+  </div>
 </mat-card>

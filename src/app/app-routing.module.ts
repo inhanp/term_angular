@@ -5,7 +5,6 @@ import {LoginComponent} from './login/login.component';
 import {AuthGuard} from './_services/auth-guard.service';
 import {AdminComponent} from './admin/admin.component';
 import {RegisterComponent} from './register/register.component';
-import {SettingsComponent} from './settings/settings.component';
 import {Role} from './_models/role';
 import {EditComponent} from './edit/edit.component';
 
@@ -14,8 +13,7 @@ import {EditComponent} from './edit/edit.component';
 const routes: Routes = [{path: '', component: HomeComponent, canActivate: [AuthGuard]},
   {path: 'login', component: LoginComponent}, { path: 'register', component: RegisterComponent },
   {path: 'admin', component: AdminComponent, canActivate: [AuthGuard], data: { roles: [Role.admin]}},
-  {path: 'settings', component: SettingsComponent}, {path: 'edit', component: EditComponent},
-  { path: '**', redirectTo: '' }];
+  {path: 'edit', component: EditComponent}, { path: '**', redirectTo: '' }];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
