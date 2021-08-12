@@ -1,5 +1,5 @@
 <mat-card class="todo" [matTooltip]="username">
-  <div class="date">due {{dueDate | date}}</div>
+  <div class="date" [ngStyle]="{'color':color}">due {{dueDate | date}}</div>
   <div class="container">
     <button mat-icon-button [routerLink]="['/edit', {createdDate: this.createdDate, dueDate: this.dueDate, task: this.task}]" [matTooltip]="'edit'">
       <mat-icon>edit</mat-icon>

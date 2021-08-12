@@ -20,11 +20,7 @@ export class LoginComponent {
      private router: Router,
      private authService: AuthService,
      private notif: NotificationService
-  ) {
-    if (this.authService.currentUserValue) {
-   //   this.router.navigate(['/']);
-    }
-  }
+  ) {}
 
 
 
@@ -48,11 +44,6 @@ export class LoginComponent {
           this.notif.showNotif(this.error, 'dismiss');
           console.log('Error', error);
         });
-  }
-
-  register() {
-
-    this.notif.notImplementedWarning('Registration', 500);
   }
 }
 

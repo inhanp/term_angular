@@ -16,12 +16,12 @@ export class TodoComponent implements OnInit {
   dueDate: Date;
   createdDate: Date;
   username: string;
+  color: string;
 
   constructor(private userService: UserService,
               private notif: NotificationService) { }
 
   delete(date) {
-    console.log(date);
     this.deleteEvent.emit(date);
   }
   upcoming() {
@@ -29,13 +29,15 @@ export class TodoComponent implements OnInit {
     const date2 = new Date();
     const diffTime = date1.getTime() - date2.getTime();
     const diffDay = Math.round(diffTime / (1000 * 3600 * 24));
-    console.log(diffDay);
     if (diffDay < 1) {
       this.notif.showNotif('You have task to do today!', 'confirmation');
+      this.color = 'red';
     } else if (diffDay < 3) {
       this.notif.showNotif('There is upcoming task within three days', 'confirmation');
+      this.color = '#ffba00';
     } else if (diffDay < 7) {
       this.notif.showNotif('There is upcoming task within a week', 'confirmation');
+      this.color = 'blue';
     }
   }
 

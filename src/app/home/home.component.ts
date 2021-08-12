@@ -1,11 +1,7 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {first, mergeMap} from 'rxjs/operators';
 
-
 import {NotificationService} from '../_services/notification.service';
-import {PARecord} from '../_models/PARecord';
-import {PArecordService} from '../_services/parecord.service';
-import {UserService} from '../_services/user.service';
 import {Todo} from '../_models/Todo';
 import {TodoService} from '../_services/todo.service';
 
@@ -17,11 +13,9 @@ export class HomeComponent implements OnInit {
 
 
   todos: Todo[] = [];
-  parecords: PARecord[] = [];
 
 
   constructor(
-    private parecordservice: PArecordService,
     private todoservice: TodoService,
     private notifService: NotificationService,
   ) {}
@@ -33,6 +27,11 @@ export class HomeComponent implements OnInit {
   private loadAllTodos() {
     this.todoservice.getAll().subscribe(todos => {
       this.todos = todos;
+      this.todos.sort((a, b) => {
+        const date1 = new Date(a.dueDate);
+        const date2 = new Date(b.dueDate);
+        return date1.getTime() - date2.getTime();
+      });
     }, error => {
       this.notifService.showNotif(error.toString(), 'warning');
     });
@@ -44,7 +43,7 @@ export class HomeComponent implements OnInit {
         this.todos = null;
         this.loadAllTodos();
       }
-    )
+    );
   }
 
 }
