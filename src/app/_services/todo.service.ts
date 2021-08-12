@@ -17,6 +17,7 @@ export class TodoService {
   }
   edit(createdDate: Date, dueDate: Date, task: string) {
     const todo = {createdDate, dueDate, task};
+    return this.http.post('http://localhost:3030/todo/edittodo', todo);
   }
   delete() {
   }

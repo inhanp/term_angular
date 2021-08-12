@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {TodoService} from '../_services/todo.service';
 import {NotificationService} from '../_services/notification.service';
+import { Router, ActivatedRoute, ParamMap} from '@angular/router';
 import {first} from 'rxjs/operators';
 
 @Component({
@@ -13,7 +14,8 @@ export class AddComponent implements OnInit {
   task: string;
 
   constructor(private todoService: TodoService,
-              private notif: NotificationService) { }
+              private notif: NotificationService,
+              private router: Router) { }
 
   ngOnInit() {}
 
@@ -30,8 +32,17 @@ export class AddComponent implements OnInit {
     return task;
   }
   submit() {
-    this.todoService.add(this.task, this.dueDate).pipe(first()).subscribe(result => {
-      this.notif.showNotif('Recorded!', 'confirmation');
-    });
+    if (this.dueDate === undefined) {
+      this.notif.showNotif('You did not selected due date', 'error');
+    } else if (this.dueDate.getTime() - new Date().getTime() < 0) {
+      this.notif.showNotif('Received due date is not in the future', 'error');
+    } else if (this.task === undefined) {
+      this.notif.showNotif('You forgot to write the task', 'error');
+    } else {
+      this.todoService.add(this.task, this.dueDate).pipe(first()).subscribe(result => {
+        this.notif.showNotif('Recorded!', 'confirmation');
+        this.router.navigate(['/']);
+      });
+    }
   }
 }

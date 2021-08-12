@@ -16,6 +16,7 @@ export class EditComponent implements OnInit {
 
   constructor(private todoService: TodoService,
               private route: ActivatedRoute,
+              private router: Router,
               private notif: NotificationService) { }
 
   ngOnInit() {
@@ -39,9 +40,16 @@ export class EditComponent implements OnInit {
     return task;
   }
   submit() {
-    this.todoService.add(this.task, this.dueDate).pipe(first()).subscribe(result => {
-      this.notif.showNotif('Recorded!', 'confirmation');
-    });
+    if (this.dueDate.getTime() - new Date().getTime() < 0) {
+      this.notif.showNotif('Received due date is not in the future', 'error');
+    } else if (this.task === undefined) {
+      this.notif.showNotif('You forgot to write the task', 'error');
+    } else {
+      this.todoService.edit(this.createdDate, this.dueDate, this.task).pipe(first()).subscribe(result => {
+        this.notif.showNotif('Recorded!', 'confirmation');
+        this.router.navigate(['/']);
+      });
+    }
   }
 
 }
