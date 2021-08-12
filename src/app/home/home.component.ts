@@ -6,6 +6,8 @@ import {NotificationService} from '../_services/notification.service';
 import {PARecord} from '../_models/PARecord';
 import {PArecordService} from '../_services/parecord.service';
 import {UserService} from '../_services/user.service';
+import {Todo} from '../_models/Todo';
+import {TodoService} from '../_services/todo.service';
 
 
 @Component({ templateUrl: 'home.component.html' ,
@@ -14,21 +16,28 @@ import {UserService} from '../_services/user.service';
 export class HomeComponent implements OnInit {
 
 
-
+  todos: Todo[] = [];
   parecords: PARecord[] = [];
 
 
   constructor(
     private parecordservice: PArecordService,
-
+    private todoservice: TodoService,
     private notifService: NotificationService,
   ) {}
 
   ngOnInit() {
-    this.loadAllPArecords();
-      }
+    // this.loadAllPArecords();
+    this.loadAllTodos();
+  }
 
-
+  private loadAllTodos() {
+    this.todoservice.getAll().subscribe(todos => {
+      this.todos = todos;
+    }, error => {
+      this.notifService.showNotif(error.toString(), 'warning');
+    });
+  }
 
 
 
@@ -40,16 +49,6 @@ export class HomeComponent implements OnInit {
          },
         error => {
             this.notifService.showNotif(error.toString(), 'warning'); });
-  }
-
-  createPARecord() {
-    // this.parecordservice.add().pipe(first()).subscribe(
-    //   resp => {
-    //     this.notifService.showNotif('Recorded!', 'response');
-    //     this.parecords = null;
-    //     this.loadAllPArecords();
-    //     }, error => {
-    //     this.notifService.showNotif(error); });
   }
 
   deletePARecord(date) {

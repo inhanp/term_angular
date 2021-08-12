@@ -1,11 +1,11 @@
-<div class="pa-record-container">
-  <app-todo></app-todo>
+<div class="todo-container">
+  <app-todo class="card-item" *ngFor="let todo of todos" [todo]="todo"></app-todo>
 </div>
 
 
 
 <div class="fab-container">
-  <button mat-flat-button color="primary"  matTooltip="Add new todo task" routerLink="/edit" >
+  <button mat-flat-button color="primary"  matTooltip="Add new todo task" routerLink="/add" >
     <i class="material-icons">add</i>
   </button>
 </div>

@@ -2,12 +2,19 @@
   grid-area: date;
 }
 .menu{
-
   grid-area: menu;
   justify-self: end;
   align-self: start;
 }
-.todo {display: grid;
-  max-width: 100%;
-  grid-template-columns: 15% 15% 34% 2% 34%;
+.task {
+  grid-area: task;
+  word-wrap: break-word;
+}
+.todo {
+  display: grid;
+  grid-template-columns: 100px 100px 50px;
+  grid-template-rows: 50px;
+  grid-template-areas:
+    "date date menu"
+    "task task task";
 }

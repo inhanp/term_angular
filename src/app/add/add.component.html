@@ -1,8 +1,8 @@
 <mat-card>
-  <p>Edit your exercise!</p>
+  <p>Add your exercise!</p>
   <mat-form-field class="due-date" appearance="standard">
     <mat-label>Choose the due date</mat-label>
-    <input matInput disabled="true" (ngModelChange)="dateChange($event)" [(ngModel)]="dueDate" [matDatepicker]="picker">
+    <input matInput (ngModelChange)="dateChange($event)" [(ngModel)]="dueDate" [matDatepicker]="picker">
     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>
   </mat-form-field>

@@ -5,12 +5,13 @@ import {LoginComponent} from './login/login.component';
 import {AuthGuard} from './_services/auth-guard.service';
 import {RegisterComponent} from './register/register.component';
 import {EditComponent} from './edit/edit.component';
+import {AddComponent} from './add/add.component';
 
 // add the route to the 'settings' component.
 
 const routes: Routes = [{path: '', component: HomeComponent, canActivate: [AuthGuard]},
   {path: 'login', component: LoginComponent}, { path: 'register', component: RegisterComponent },
-  {path: 'edit', component: EditComponent}, { path: '**', redirectTo: '' }];
+  {path: 'edit', component: EditComponent}, {path: 'add', component: AddComponent}, { path: '**', redirectTo: '' }];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

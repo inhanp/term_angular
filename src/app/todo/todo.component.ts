@@ -1,4 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {UserService} from '../_services/user.service';
+import {first} from 'rxjs/operators';
 
 @Component({
   selector: 'app-todo',
@@ -10,17 +12,23 @@ export class TodoComponent implements OnInit {
   @Output() deleteEvent = new EventEmitter<Date>();
 
   task: string;
-  date: Date;
+  dueDate: Date;
+  createdDate: Date;
   username: string;
 
-  constructor() { }
+  constructor(private userService: UserService) { }
 
   delete(date) {
     this.deleteEvent.emit(date);
   }
 
   ngOnInit() {
-    this.username = 'anonymous';
+    this.userService.getUser(this.todo.createdBy).pipe(first()).subscribe(user => {
+      this.username = user;
+    });
+    this.dueDate = this.todo.dueDate;
+    this.createdDate = this.todo.createdDate;
+    this.task = this.todo.task;
   }
 
 }

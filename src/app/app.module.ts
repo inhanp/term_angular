@@ -15,6 +15,7 @@ import {JwtInterceptor} from './interceptors/jwt.interceptor';
 import {ErrorInterceptor} from './interceptors/error.interceptor';
 import { EditComponent } from './edit/edit.component';
 import { TodoComponent } from './todo/todo.component';
+import { AddComponent } from './add/add.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { TodoComponent } from './todo/todo.component';
     HomeComponent,
     RegisterComponent,
     EditComponent,
-    TodoComponent
+    TodoComponent,
+    AddComponent
   ],
   imports: [
     BrowserModule,

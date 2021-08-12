@@ -1,13 +1,11 @@
-<p>todo works!</p>
 <mat-card class="todo" [matTooltip]="username">
-  <div class="date">{{date}}</div>
-  <div class="task">{{task}}</div>
+  <div class="date">~{{dueDate | date}}</div>
   <div class="menu">
     <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Delete or edit">
       <mat-icon>more_vert</mat-icon>
     </button>
     <mat-menu #menu="matMenu">
-      <button mat-menu-item>
+      <button mat-menu-item [routerLink]="['/edit', {createdDate: this.createdDate, dueDate: this.dueDate, task: this.task}]">
         <mat-icon>edit</mat-icon>
         <span>Edit</span>
       </button>
@@ -17,4 +15,5 @@
       </button>
     </mat-menu>
   </div>
+  <div class="task">{{task}}</div>
 </mat-card>
