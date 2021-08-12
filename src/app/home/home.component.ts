@@ -27,7 +27,6 @@ export class HomeComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    // this.loadAllPArecords();
     this.loadAllTodos();
   }
 
@@ -39,28 +38,13 @@ export class HomeComponent implements OnInit {
     });
   }
 
-
-
-  private loadAllPArecords() {
-    console.log('loadAllParecords()');
-    this.parecordservice.getAll().subscribe(
-         parecords => {
-           this.parecords = parecords;
-         },
-        error => {
-            this.notifService.showNotif(error.toString(), 'warning'); });
-  }
-
-  deletePARecord(date) {
-
-
-    // this.userService.deleteActivity(date);
-    this.parecordservice.delete(date).pipe(first()).subscribe(
+  deleteTodo(date) {
+    this.todoservice.delete(date).pipe(first()).subscribe(
       result => {
-        this.notifService.showNotif(`Deleted:${result}`, 'response');
-        this.parecords = null;
-        this.loadAllPArecords();
-    });
+        this.todos = null;
+        this.loadAllTodos();
+      }
+    )
   }
 
 }

@@ -21,6 +21,7 @@ export class TodoComponent implements OnInit {
               private notif: NotificationService) { }
 
   delete(date) {
+    console.log(date);
     this.deleteEvent.emit(date);
   }
   upcoming() {
