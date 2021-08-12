@@ -1,19 +1,12 @@
 <mat-card class="todo" [matTooltip]="username">
-  <div class="date">~{{dueDate | date}}</div>
-  <div class="menu">
-    <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Delete or edit">
-      <mat-icon>more_vert</mat-icon>
+  <div class="date">due {{dueDate | date}}</div>
+  <div class="container">
+    <button mat-icon-button [routerLink]="['/edit', {createdDate: this.createdDate, dueDate: this.dueDate, task: this.task}]" [matTooltip]="'edit'">
+      <mat-icon>edit</mat-icon>
     </button>
-    <mat-menu #menu="matMenu">
-      <button mat-menu-item [routerLink]="['/edit', {createdDate: this.createdDate, dueDate: this.dueDate, task: this.task}]">
-        <mat-icon>edit</mat-icon>
-        <span>Edit</span>
-      </button>
-      <button mat-menu-item (click)="delete(this.createdDate)">
-        <mat-icon>delete</mat-icon>
-        <span>Delete</span>
-      </button>
-    </mat-menu>
+    <button mat-icon-button (click)="delete(this.createdDate)" [matTooltip]='"done"'>
+      <mat-icon>done</mat-icon>
+    </button>
   </div>
   <div class="task">{{task}}</div>
 </mat-card>

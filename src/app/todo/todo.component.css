@@ -1,10 +1,8 @@
 .date {
   grid-area: date;
 }
-.menu{
-  grid-area: menu;
-  justify-self: end;
-  align-self: start;
+.container {
+  grid-area: container;
 }
 .task {
   grid-area: task;
@@ -12,9 +10,9 @@
 }
 .todo {
   display: grid;
-  grid-template-columns: 100px 100px 50px;
+  grid-template-columns: 175px 100px;
   grid-template-rows: 50px;
   grid-template-areas:
-    "date date menu"
-    "task task task";
+    "date container"
+    "task task";
 }
